@@ -69,6 +69,7 @@ namespace API.Controllers
 
             return BadRequest("Failed to update user.");
         }
+        
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
