@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for datingapp130989 on 2023-09-26T18:15:26+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "datingapp130989"
+primary_region = "ams"
+
+[build]
+  image = "jaydeepviradiya/datingapp:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  CloudinarySettings__CloudName="dc9bqfbco"
+  CloudinarySettings__ApiKey="879882616868198"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]

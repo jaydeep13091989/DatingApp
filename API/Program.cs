@@ -17,6 +17,7 @@ namespace API
     {
         public static async Task Main(string[] args)
         {
+          
           var host = CreateHostBuilder(args).Build();
           using var scope = host.Services.CreateScope();
           var services = scope.ServiceProvider;
@@ -26,7 +27,7 @@ namespace API
             var userManager = services.GetRequiredService<UserManager<AppUser>>();
              var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
             await context.Database.MigrateAsync();
-            await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
+            await Seed.ClearConnection(context);
             //context.Connections.RemoveRange(context.Connections);
             await Seed.SeedUsers(userManager, roleManager);
           }
@@ -35,7 +36,6 @@ namespace API
             var logger = services.GetRequiredService<ILogger<Program>>();
             logger.LogError(ex, "An error occurred during migration");
           }
-
           await host.RunAsync();
         }
 
