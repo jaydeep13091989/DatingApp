@@ -1,4 +1,3 @@
-import { InjectableClassRegistry } from "@angular/compiler-cli/src/ngtsc/metadata";
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
